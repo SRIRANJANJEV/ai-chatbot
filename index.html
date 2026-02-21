@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MedAssist — AI Medical Information Chatbot</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <!-- Marked.js for Markdown rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <!-- ── Header ──────────────────────────────────────────────────────────── -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" width="28" height="28">
+          <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/>
+          <path d="M12 8v8M8 12h8"/>
+        </svg>
+        MedAssist
+      </div>
+      <span class="header-tag">AI-Powered Medical Information</span>
+    </div>
+  </header>
+
+  <!-- ── Disclaimer banner ────────────────────────────────────────────────── -->
+  <div class="disclaimer-banner" role="alert">
+    ⚠️ <strong>Disclaimer:</strong> This chatbot is <em>not</em> a medical
+    professional. The information provided is for educational purposes only.
+    Always consult a licensed doctor for medical advice, diagnosis, or treatment.
+  </div>
+
+  <!-- ── Main layout ──────────────────────────────────────────────────────── -->
+  <main class="chat-container">
+
+    <!-- Sidebar with example questions -->
+    <aside class="sidebar">
+      <h3 class="sidebar-title">Suggested Questions</h3>
+      <ul class="suggestions" id="suggestions">
+        <li>What are the common symptoms of Type 2 Diabetes?</li>
+        <li>How is hypertension typically managed?</li>
+        <li>What is the difference between a viral and bacterial infection?</li>
+        <li>What medications are commonly used for asthma?</li>
+        <li>Explain the stages of chronic kidney disease.</li>
+        <li>What are the warning signs of a stroke?</li>
+      </ul>
+      <div class="sidebar-note">
+        🔒 Your queries are sent securely and are not stored.
+      </div>
+    </aside>
+
+    <!-- Chat window -->
+    <section class="chat-window">
+      <div class="messages" id="messages" role="log" aria-live="polite">
+        <!-- Welcome message -->
+        <div class="message bot-message">
+          <div class="avatar bot-avatar" aria-hidden="true">🩺</div>
+          <div class="bubble">
+            <p>Hello! I'm <strong>MedAssist</strong>, your AI medical information
+            assistant. I can answer questions based on a curated medical knowledge
+            base.</p>
+            <p>Please remember: I am not a substitute for professional medical
+            advice. Click a suggestion on the left or type your question below.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Typing indicator (hidden by default) -->
+      <div class="typing-indicator" id="typing" aria-label="MedAssist is thinking" hidden>
+        <div class="avatar bot-avatar" aria-hidden="true">🩺</div>
+        <div class="bubble typing-bubble">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <!-- Input area -->
+      <form class="input-area" id="chatForm" autocomplete="off" novalidate>
+        <textarea
+          id="queryInput"
+          class="query-input"
+          placeholder="Ask a medical question…"
+          rows="1"
+          maxlength="2000"
+          aria-label="Your medical question"
+        ></textarea>
+        <button type="submit" class="send-btn" id="sendBtn" aria-label="Send">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2.5"
+               width="22" height="22">
+            <line x1="22" y1="2" x2="11" y2="13"/>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </button>
+      </form>
+    </section>
+  </main>
+
+  <!-- ── Auth modal ───────────────────────────────────────────────────────── -->
+  <div class="modal-backdrop" id="authModal" role="dialog"
+       aria-modal="true" aria-labelledby="authTitle">
+    <div class="modal">
+      <h2 id="authTitle">🔐 Sign In</h2>
+      <p>Enter your API credentials to use MedAssist.</p>
+      <form id="authForm" novalidate>
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="admin" required />
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="••••••••" required />
+        <button type="submit" class="btn-primary">Sign In</button>
+        <p class="auth-error" id="authError" hidden>
+          ❌ Invalid credentials. Please try again.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <script src="/static/js/chat.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+# ── Core LLM & RAG ─────────────────────────────────────────────────────────────
+openai==1.30.1
+langchain==0.2.5
+langchain-openai==0.1.9
+langchain-community==0.2.5
+langchain-core==0.2.9
+
+# ── Vector Store ────────────────────────────────────────────────────────────────
+faiss-cpu==1.8.0          # swap for pinecone-client if using Pinecone
+
+# ── PDF Handling ────────────────────────────────────────────────────────────────
+pypdf==4.2.0
+unstructured==0.14.6
+
+# ── Flask & Extensions ──────────────────────────────────────────────────────────
+flask==3.0.3
+flask-limiter==3.7.0      # rate limiting
+flask-cors==4.0.1
+flask-httpauth==4.8.0     # basic auth
+
+# ── Security & Config ───────────────────────────────────────────────────────────
+python-dotenv==1.0.1
+bleach==6.1.0             # input sanitisation
+
+# ── Production Server ───────────────────────────────────────────────────────────
+gunicorn==22.0.0
+
+# ── Utilities ───────────────────────────────────────────────────────────────────
+tqdm==4.66.4
+tiktoken==0.7.0
+numpy==1.26.4
